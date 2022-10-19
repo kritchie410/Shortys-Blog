@@ -46,30 +46,14 @@ class Post
     public static function find($slug)
     {
         return static::all()->firstWhere('slug', $slug);
-        // $path = __DIR__ . "/../resources/posts/{$slug}.html";
-        // base_path();
-        // if (! file_exists($path = __DIR__ . "/../resources/posts/{$slug}.html")) {     // also can do this
-        // if you couldn't find the post -> throw
-        // if (!file_exists($path = resource_path("posts/{$slug}.html"))) {
-        // of all the blog postsm find the one with a slug that matches the one that was requested.
 
-        // dd($posts);
-        // also can do this
-        // throw new ModelNotFoundException();
-        // if (! file_exists($path)) {
-        // option1 : show error message
-        // ddd('file does not exist');
-        // dd('file does not exist');
-        // option2 : show 404 error
-        // abort(404);
-        // option3 : send back to homepage
-        // return redirect('/');
-
-        // cache for 20minutes
-        // return $post = cache()->remember("posts.{$slug}", 1200, function () use ($path) {
-        // var_dump('file_get_contents');
-        // return file_get_contents($path);
-        // $post = file_get_contents($path);
-        // });
+    }
+    public static function findOrFail($slug)
+    {
+        $post = static::find($slug);
+        if (!$post) {
+            throw new ModelNotFoundException();
+        }
+        return $post;
     }
 }

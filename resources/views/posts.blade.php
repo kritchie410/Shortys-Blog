@@ -1,7 +1,9 @@
-@extends ('layout')
-@section('content')
+<x-layout>
+
     @foreach ($posts as $post)
-        <article class="{{ $loop->even ? 'foobar' : '' }}">
+        <article>
+                    {{-- option to select classes  --}}
+        {{-- <article class="{{ $loop->even ? 'foobar' : '' }}"> --}}
             <h1>
                 <a href="/posts/{{ $post->slug }}">
 
@@ -13,4 +15,5 @@
             </div>
         </article>
     @endforeach
-@endsection
+
+</x-layout>

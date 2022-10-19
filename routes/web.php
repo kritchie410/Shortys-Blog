@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\File;
 */
 
 Route::get('/', function () {
-    // $document = YamlFrontMatter::parseFile(
-    //     resource_path('posts/my-fourth-post.html')
-    // );
 
     // ddd($posts);
     return view('posts', [
@@ -26,10 +23,10 @@ Route::get('/', function () {
     ]);
 });
 Route::get('posts/{post}', function ($slug) {
-    // Find a post by its slug and pass it to a view called 'post'
-    $post = Post::find($slug);
+
+    $post = Post::findOrFail($slug);
+
     return view('post', [
         'post' => $post
     ]);
-})->where('post', '[A-z_\-]+');
-// }) ->whereAlpha('post');
+});
