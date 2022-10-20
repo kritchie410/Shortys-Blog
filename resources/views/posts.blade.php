@@ -2,10 +2,10 @@
 
     @foreach ($posts as $post)
         <article>
-                    {{-- option to select classes  --}}
-        {{-- <article class="{{ $loop->even ? 'foobar' : '' }}"> --}}
+            {{-- option to select classes  --}}
+            {{-- <article class="{{ $loop->even ? 'foobar' : '' }}"> --}}
             <h1>
-                <a href="/posts/{{ $post->id }}">
+                <a href="/posts/{{ $post->slug }}">
 
                     {{ $post->title }}
                 </a>
