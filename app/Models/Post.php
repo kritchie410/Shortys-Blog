@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
     use HasFactory;
 
     protected $guarded = [];   // protected $fillable = ['title', 'excerpt', 'body', 'id'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     // public function getRouteKeyName()
     // {
